@@ -16,14 +16,16 @@ class TodoResponse(BaseModel):
     content: str
 
 class TodoInput(BaseModel):
-    user_email: str
     content: str
+
+
 
 def todo_serializer(todo)-> dict:
     return {
         "_id" : str(todo["_id"]),
         "user_email": str(todo["user_email"]),
-        "content": str(todo["content"])
+        "content": str(todo["task"]),
+        "time_stamp": str(todo["time_stamp"])
     }
 
 def todos_serializer(todos)-> list:
