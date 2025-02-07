@@ -10,6 +10,7 @@ todo_collection = db["todo"]
 
 users_collection.create_index([("email", 1)])
 todo_collection.create_index([("user_email", 1)])
+
 def get_users_collection():
     yield users_collection
 
