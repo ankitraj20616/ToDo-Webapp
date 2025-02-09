@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from config import setting
+from fastapi import Depends
 
 client = MongoClient(setting.DB_URL)
 
@@ -16,3 +17,6 @@ def get_users_collection():
 
 def get_todo_collection():
     yield todo_collection
+
+
+
