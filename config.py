@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
     ASCESS_TOKEN_EXPIRE_MINUTES: int
+    TEST_DB_NAME: str
 
     class Config:
         env_nested_delimiters = "__"
