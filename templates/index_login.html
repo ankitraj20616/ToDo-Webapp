@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App - Login/Signup</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', path='css/style_login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h2 id="formTitle">Log in</h2>
+          <p id="formDescription">
+            Enter your credentials to access your account
+          </p>
+        </div>
+        <div class="card-content">
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Log in</button>
+          </form>
+          <form id="signupForm" style="display: none">
+            <div class="form-group">
+              <label for="signupName">Name</label>
+              <input type="text" id="signupName" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="signupEmail">Email</label>
+              <input type="email" id="signupEmail" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <input
+                type="password"
+                id="signupPassword"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+          </form>
+          <div id="message" class="message"></div>
+          <div class="form-switch">
+            <button id="switchForm" class="btn btn-link">
+              Need an account? Sign up
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{url_for('static', path='js/script_login.js')}}"></script>
+  </body>
+</html>

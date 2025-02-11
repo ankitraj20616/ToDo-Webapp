@@ -12,9 +12,7 @@ from pymongo.collection import Collection
 
 router = APIRouter()
 
-@router.get("/")
-def test():
-    return "App Loaded!"
+
 
 @router.post("/signUp")
 def signUp(new_user: userInput, users_collection: Collection = Depends(get_users_collection)):
