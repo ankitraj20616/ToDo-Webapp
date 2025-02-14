@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Cookie
 from fastapi.middleware.cors import CORSMiddleware
 from routers import router
 from os.path import dirname, join
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
+from typing import Annotated
+from auth import JWTAuthentication
 app = FastAPI()
 
 origins = [
@@ -37,5 +38,8 @@ def home(request: Request):
 
 
 @app.get("/dashboard")
-def home(request: Request):
-    return templates.TemplateResponse("index_dashboard.html", {"request": request})
+def dashboard(request: Request, token: str = Cookie(None)):
+    if not token or not JWTAuthentication().verify_token(token):
+        return templates.TemplateResponse("index_dashboard.html", {"request": request})
+    
+    return templates.TemplateResponse("index_login.html", {"request": request})

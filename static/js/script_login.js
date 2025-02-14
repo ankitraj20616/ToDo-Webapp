@@ -43,11 +43,15 @@ $(document).ready(() => {
       data: isLogin ? loginData : signupData,
       contentType: "application/json",
       success: (response) => {
-        if (response.success) {
+        if (response.token) {
           $message
             .text(response.message)
             .addClass("success")
             .removeClass("error");
+          localStorage.setItem("token", response.token);
+          console.log("Token saved: ", localStorage.getItem("token"));
+          document.cookie = `token=${response.token}; path=/;`;
+          window.location.href = `/dashboard`;
         } else {
           $message
             .text(response.message)
