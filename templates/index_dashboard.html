@@ -3,7 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo Dashboard</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', path='css/style_dashboard.css') }}"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="todo-card">
+        <h1>My Todo List</h1>
+
+        <!-- Add Todo Form -->
+        <form id="addTodoForm" class="add-todo-form">
+          <div class="input-group">
+            <input
+              type="text"
+              id="newTodo"
+              placeholder="Add a new task..."
+              required
+            />
+            <button type="submit" class="add-button">
+              <i data-lucide="plus-circle"></i>
+              Add
+            </button>
+          </div>
+        </form>
+
+        <!-- Todo List -->
+        <div id="todoList" class="todo-list"></div>
+      </div>
+    </div>
+
+    <!-- Todo Item Template -->
+    <template id="todoTemplate">
+      <div class="todo-item" data-id="">
+        <span class="todo-text"></span>
+        <div class="todo-actions">
+          <button class="edit-btn">
+            <i data-lucide="edit"></i>
+          </button>
+          <button class="delete-btn">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <!-- Edit Todo Template -->
+    <template id="editTemplate">
+      <div class="edit-container">
+        <input type="text" class="edit-input" />
+        <button class="confirm-btn">
+          <i data-lucide="check"></i>
+        </button>
+        <button class="cancel-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+    </template>
+    <!-- Logout Button -->
+    <div class="logout-container">
+      <button id="logoutButton" class="logout-btn">Logout</button>
+    </div>
+
+    <script src="{{ url_for('static', path='js/dashboard.js') }}"></script>
+  </body>
 </html>

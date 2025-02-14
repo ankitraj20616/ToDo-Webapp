@@ -67,8 +67,9 @@ def insertToDo(new_todo: TodoInput, todo_collection: Collection = Depends(get_to
     if not payload or not payload.get("email"):
         raise HTTPException(status_code= status.HTTP_400_BAD_REQUEST, detail= "LogIn Error! unable to extact email from current token.")
     user_email = payload.get("email")
-    todo = readTodo(todo_collection, jwt_token).get("todo")
-    last_id = int(todo[-1].get("_id")) if todo else 0
+    
+    last_doc = todo_collection.find_one(sort= [("_id", -1)])
+    last_id = last_doc["_id"] if last_doc else 0
     print(last_id)
     todo_collection.insert_one({"_id": last_id + 1,"user_email": user_email, "task": new_todo.content, "time_stamp": datetime.now().isoformat()})
     return {"message": "Todo item inserted successfully!", "email": user_email}

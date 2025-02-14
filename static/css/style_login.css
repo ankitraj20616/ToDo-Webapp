@@ -84,7 +84,6 @@ input {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  width: 100%;
 }
 
 .btn-primary:hover {
@@ -122,4 +121,47 @@ input {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
+}
+
+/* New styles for the todo dashboard */
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+#addTodoForm .form-group {
+  display: flex;
+  gap: 10px;
+}
+
+#addTodoForm input {
+  flex-grow: 1;
+}
+
+#addTodoForm button {
+  width: auto;
 }
